@@ -1,0 +1,219 @@
+/* Base styles and reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+        sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background gradient */
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    z-index: -1;
+}
+
+/* Terminal window styles */
+.terminal-window {
+    width: 700px;
+    max-width: 90vw;
+    height: 450px;
+    max-height: 80vh;
+    background-color: #1e1e1e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Title bar */
+.title-bar {
+    background-color: #2d2d2d;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    position: relative;
+    user-select: none;
+}
+
+.traffic-lights {
+    display: flex;
+    gap: 8px;
+}
+
+.close-button,
+.minimize-button,
+.maximize-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    transition: opacity 0.2s ease;
+}
+
+.close-button {
+    background-color: #ff5f56;
+}
+
+.minimize-button {
+    background-color: #ffbd2e;
+}
+
+.maximize-button {
+    background-color: #27c93f;
+}
+
+.close-button:hover,
+.minimize-button:hover,
+.maximize-button:hover {
+    opacity: 0.8;
+}
+
+.title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #bebebe;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* Terminal content */
+.terminal-content {
+    flex: 1;
+    padding: 12px;
+    overflow-y: auto;
+    font-family:
+        "SF Mono", SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+        "Courier New", monospace;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #f0f0f0;
+}
+
+.terminal-text {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    width: 100%;
+}
+
+.terminal-line {
+    margin-bottom: 8px;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.prompt {
+    color: #56c8d8;
+    margin-right: 8px;
+}
+
+.prompt a {
+    color: #56c8d8;
+    text-decoration: none;
+}
+
+.prompt a:hover {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-decoration-color: lightcoral;
+}
+
+.command {
+    color: #f0f0f0;
+}
+
+.ascii-art {
+    margin: 12px 0;
+    color: #f0f0f0;
+}
+
+.terminal-text .ascii-art,
+.terminal-text {
+}
+
+/* Blinking cursor */
+.cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background-color: #f0f0f0;
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .terminal-window {
+        width: 95vw;
+        height: 70vh;
+    }
+
+    .terminal-content {
+        font-size: 12px;
+    }
+
+    .ascii-art,
+    .terminal-text .ascii-art {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .terminal-content {
+        font-size: 11px;
+        padding: 8px;
+    }
+
+    .terminal-text {
+        font-size: 11px;
+    }
+
+    .title {
+        font-size: 11px;
+    }
+
+    .traffic-lights {
+        gap: 6px;
+    }
+
+    .close-button,
+    .minimize-button,
+    .maximize-button {
+        width: 10px;
+        height: 10px;
+    }
+}
